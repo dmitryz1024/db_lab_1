@@ -1,9 +1,13 @@
 # Лабораторная работа 1
 
 ## Начало работы
-### Инициализируем контейнер с базой данных
+### Инициализируем контейнер для базы данных
 ```powershell
 docker run --name pg-lab -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=labdb -p 5432:5432 -v ${PWD}:/db -d postgres:14
+```
+### Создаем базу данных по файлу
+```powershell
+docker exec -i pg-lab psql -U postgres -d labdb -f /db/db.sql
 ```
 ### Подключаемся к базе данных
 ```powershell
